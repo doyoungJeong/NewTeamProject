@@ -61,7 +61,6 @@ public class OrderDao {
 		Integer pk = null;
 		String sql = "insert into orders (member_id, order_date,order_price) values(?,?,?)";
 		KeyHolder keyHolder=new GeneratedKeyHolder();
-		
 		jdbcTemplate.update(new PreparedStatementCreator(){
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException{

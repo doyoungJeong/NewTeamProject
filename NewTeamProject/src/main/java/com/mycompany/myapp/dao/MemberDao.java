@@ -20,8 +20,7 @@ public class MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
-	public Integer insert(Member member){
-		Integer pk = null;
+	public String insert(Member member){
 		String sql = "insert into members"
 				+ " (member_id, member_name, member_password) "
 				+ "values (?,?, ?)";
@@ -39,9 +38,7 @@ public class MemberDao {
 			}
 			
 		}, keyHolder);
-		Number keyNumber=keyHolder.getKey();
-		pk=keyNumber.intValue();
-		return pk;
+		return member.getMemberId();
 	}
 	
 	

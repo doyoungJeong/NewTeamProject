@@ -55,29 +55,19 @@ public class OrderItemDao {
 	
 	}
 
-	public int insert(List<Cart> cartlist, String loginID, int orderNo) throws SQLException {
+	public void insert(List<Cart> cartlist, String loginID, int orderNo) throws SQLException {
 		Integer pk = null;
 		String sql = "insert into orderitems (order_no,"
 				+ " product_no, orderitem_amount, orderitem_price) values(?,?,?,?)";
-		
 		for (Cart cart : cartlist) {
-		KeyHolder keyHolder=new GeneratedKeyHolder();
-		jdbcTemplate.update(new PreparedStatementCreator(){
-			@Override
-			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException{
-				PreparedStatement pstmt = conn.prepareStatement(sql, new String[] {"orderitem_no" });
-			
-					pstmt.setInt(1, orderNo);
-					pstmt.setInt(2, cart.getProductNo());
-					pstmt.setInt(3, cart.getCartAmount());
-					pstmt.setInt(4, cart.getProductPrice());
-					return pstmt;
-			}
-			
-		}, keyHolder);
-		Number keyNumber=keyHolder.getKey();
-		pk=keyNumber.intValue();
+			KeyHolder keyHolder=new GeneratedKeyHolder();
+			jdbcTemplate.update(
+					sql, 
+					orderNo, 
+					cart.getProductNo(), 
+					cart.getCartAmount(),
+					cart.getProductPrice()
+			);
 		}
-		return pk;	
 	}
 }
