@@ -2,6 +2,31 @@ package com.mycompany.myapp.dto;
 
 public class Product {
 	private int productNo;
+	private String productName;
+	private int productPrice;
+	private String productInfo;
+	private String originalFileName;
+	private String filesystemName;
+	private String contentType;
+	
+	public String getOriginalFileName() {
+		return originalFileName;
+	}
+	public void setOriginalFileName(String originalFileName) {
+		this.originalFileName = originalFileName;
+	}
+	public String getFilesystemName() {
+		return filesystemName;
+	}
+	public void setFilesystemName(String filesystemName) {
+		this.filesystemName = filesystemName;
+	}
+	public String getContentType() {
+		return contentType;
+	}
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
 	public int getProductNo() {
 		return productNo;
 	}
@@ -26,8 +51,4 @@ public class Product {
 	public void setProductInfo(String productInfo) {
 		this.productInfo = productInfo;
 	}
-	private String productName;
-	private int productPrice;
-	private String productInfo;
-	
 }
