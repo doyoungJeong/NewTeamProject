@@ -11,11 +11,11 @@ import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
-
+import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dto.Member;
 
-
+@Component
 public class MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
