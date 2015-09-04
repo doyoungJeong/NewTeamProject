@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.mycompany.myapp.service.MemberService;
 
 public class MemberController {
-
+private int a;
 private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 	
 	@Autowired
