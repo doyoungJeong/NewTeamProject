@@ -28,7 +28,7 @@ public class CartDao {
 	public Product select(int product_no){
 		
 		String sql = "select * from products where product_no=?";
-		Product product= jdbcTemplate.queryForObject(    // 객체 하나만을 위한 query
+		Product product= jdbcTemplate.queryForObject(    // 媛앹껜 �븯�굹留뚯쓣 �쐞�븳 query
 				sql,
 				new Object[] {product_no},
 				new RowMapper<Product>() {
@@ -51,7 +51,7 @@ public class CartDao {
 		return product;
 	}
 	
-	public Integer insert(Product product, String loginId, Cart cart) throws SQLException {
+	public Integer insert(Product product, String loginId, Cart cart)  {
 		Integer pk = null;
 		
 		String sql = "insert into carts (product_no, member_id, cart_amount, cart_totalprice) values(?,?,?,?)";
@@ -77,7 +77,7 @@ public class CartDao {
 	}
 
 
-	public List<Cart> select(String loginID) throws SQLException {
+	public List<Cart> select(String loginID)  {
 
 		
 		// String sql = "select distinct p.product_no, p.product_name,
@@ -88,12 +88,12 @@ public class CartDao {
 		String sql = "select p.product_no, p.product_name, p.product_price,c.cart_amount, c.cart_totalprice from "
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? ";
 		
-		List<Cart> list = jdbcTemplate.query(   //  query리턴 타입이 list
+		List<Cart> list = jdbcTemplate.query(   //  query由ы꽩 ���엯�씠 list
 				sql,
-				new Object[] {loginID},// ? 수 만큼 이 곳에 값을 나열
-				new RowMapper<Cart>() { // sql에서 가져온 칼럼의 값을 dto에 필드에 맵핑 시키는 것을 RowMapper로 한다.
+				new Object[] {loginID},// ? �닔 留뚰겮 �씠 怨녹뿉 媛믪쓣 �굹�뿴
+				new RowMapper<Cart>() { // sql�뿉�꽌 媛��졇�삩 移쇰읆�쓽 媛믪쓣 dto�뿉 �븘�뱶�뿉 留듯븨 �떆�궎�뒗 寃껋쓣 RowMapper濡� �븳�떎.
 
-					@Override // 우리가 알던 rs , 몇 개의 행을 가져왔는가 rowNum
+					@Override // �슦由ш� �븣�뜕 rs , 紐� 媛쒖쓽 �뻾�쓣 媛��졇�솕�뒗媛� rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -109,7 +109,7 @@ public class CartDao {
 
 	}
 
-	public List<Cart> selectByPageNo(String loginID, int pageNo, int rowsPerPage) throws SQLException {
+	public List<Cart> selectByPageNo(String loginID, int pageNo, int rowsPerPage)  {
 
 		
 
@@ -117,12 +117,12 @@ public class CartDao {
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? limit ?, ?";
 
 
-		List<Cart> list = jdbcTemplate.query(   //  query리턴 타입이 list
+		List<Cart> list = jdbcTemplate.query(   //  query由ы꽩 ���엯�씠 list
 				sql,
-				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? 수 만큼 이 곳에 값을 나열
-				new RowMapper<Cart>() { // sql에서 가져온 칼럼의 값을 dto에 필드에 맵핑 시키는 것을 RowMapper로 한다.
+				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? �닔 留뚰겮 �씠 怨녹뿉 媛믪쓣 �굹�뿴
+				new RowMapper<Cart>() { // sql�뿉�꽌 媛��졇�삩 移쇰읆�쓽 媛믪쓣 dto�뿉 �븘�뱶�뿉 留듯븨 �떆�궎�뒗 寃껋쓣 RowMapper濡� �븳�떎.
 
-					@Override // 우리가 알던 rs , 몇 개의 행을 가져왔는가 rowNum
+					@Override // �슦由ш� �븣�뜕 rs , 紐� 媛쒖쓽 �뻾�쓣 媛��졇�솕�뒗媛� rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -131,14 +131,14 @@ public class CartDao {
 						cart.setCartAmount(rs.getInt("cart_amount"));
 						cart.setCartTotalPrice(rs.getString("cart_totalPrice"));
 						return cart;
-					} // 행을 가지고 와서 dto에 어떻게 저장할 것인가.	
+					} // �뻾�쓣 媛�吏�怨� ���꽌 dto�뿉 �뼱�뼸寃� ���옣�븷 寃껋씤媛�.	
 				}        
  			);
 		return list;
 
 	}
 
-	public int deleteAll(String loginID) throws SQLException {
+	public int delete(String loginID)  {
 		String sql = "delete from carts where member_id= ? ";
 		int rows = jdbcTemplate.update(
 				sql,
