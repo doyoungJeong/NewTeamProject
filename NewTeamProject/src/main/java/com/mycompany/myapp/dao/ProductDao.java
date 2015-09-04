@@ -1,11 +1,17 @@
-package dao;
+package com.mycompany.myapp.dao;
 
 import java.sql.Connection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mycompany.myapp.dto.Product;
 
 public class ProductDao {
 	private Connection conn;

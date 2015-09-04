@@ -1,19 +1,25 @@
-package dao;
+package com.mycompany.myapp.dao;
 
 import java.sql.Connection;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import com.mycompany.myapp.dto.Cart;
+import com.mycompany.myapp.dto.Order;
 
 public class OrderDao {
 
 	private Connection conn;
 
-	// »ý¼ºÀÚ ÁÖÀÔ¹æ½Ä
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½
 	public OrderDao(Connection conn) {
 		this.conn = conn;
 	}
@@ -49,7 +55,7 @@ public class OrderDao {
 
 	public int insertFromCart(List<Cart> cart, String loginId) throws SQLException {
 		Date now = new Date();
-		// SimpleDateFormat sdf = new SimpleDateFormat("yyyy³â MM¿ù ddÀÏ");
+		// SimpleDateFormat sdf = new SimpleDateFormat("yyyyï¿½ï¿½ MMï¿½ï¿½ ddï¿½ï¿½");
 		// String strNow = sdf.format(now);
 		int totalPrice = 0;
 		int order_no = 0;

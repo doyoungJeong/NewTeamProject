@@ -1,4 +1,4 @@
-package dao;
+package com.mycompany.myapp.dto;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package dao;
+package com.mycompany.myapp.dto;
 
 public class Cart {
    private String memberId;
