@@ -1,18 +1,20 @@
 package com.mycompany.myapp.dao;
-package com.mycompany.myapp.dto.Member;
-import java.lang.reflect.Member;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.tree.RowMapper;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
+
+import com.mycompany.myapp.dto.Member;
+
 
 public class MemberDao {
 	@Autowired
