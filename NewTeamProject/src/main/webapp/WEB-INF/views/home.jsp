@@ -5,7 +5,7 @@
 	<head>
 		<title>Home</title>
 		<style type="text/css">
-			/*------------------------------------*/
+
 			* {
 				margin: 0px;
 				padding: 0px;
