@@ -15,8 +15,11 @@ import com.mycompany.myapp.service.OrderService;
 
 @Controller
 public class OrderController {
+	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
 	private OrderItemService orderItemService;
 	
 	//아디디 session이용해서 만들어 놓기!!
