@@ -9,6 +9,12 @@ public class Order {
 	private String orderDate;
 	private int orderPrice;
 	
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}

@@ -29,8 +29,9 @@ public class OrderDao {
 	private JdbcTemplate jdbcTemplate;
 	
 	
-	public List<Order> select(String memberID) throws SQLException {
-
+	public List<Order> select(String memberID)  {
+		System.out.println("orderDao select메소드들어옴");
+		
 		String sql = "select o.order_no,  o.order_price, o.order_date ,m.member_name  "
 				+ "from orders o , members  m  where o.member_id = m.member_id "
 				+ "and m.member_id=? order by o.order_no asc ";
@@ -45,17 +46,17 @@ public class OrderDao {
 						order.setOrderNo(rs.getInt("order_no"));
 						order.setOrderPrice(rs.getInt("order_price"));
 						order.setOrderDate(rs.getString("order_date"));
-						order.setMemberId(rs.getString("member_name"));
+						order.setMemberName(rs.getString("member_name"));
 						order.setMemberId(memberID);
 						return order;
 					}
 				}		
 			);	
-	
+		System.out.println("orderDao select메소드 끝냄");
 		return orderlist;
 	}
 
-	public int insert(List<Cart> cart, String loginId) throws SQLException {
+	public int insert(List<Cart> cart, String loginId)  {
 		
 		Date now = new Date();
 		Integer pk = null;

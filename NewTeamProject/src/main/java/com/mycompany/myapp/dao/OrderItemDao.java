@@ -27,14 +27,15 @@ public class OrderItemDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public List<OrderItem> select(String memberID, int order_no) throws SQLException {
+	public List<OrderItem> select(String memberID, int order_no)  {
 		
+		System.out.println("orderItemDao의 select들어옴");
 		
 		String sql = "select p.product_no, p.product_name, o.orderitem_amount ,o.orderitem_price from "
 				+ " orderitems o, products p  where o.product_no = p.product_no  " + "and  o.order_no= ?";
 
 		List<OrderItem> orderItemList =jdbcTemplate.query(sql,
-				new Object[]{memberID},
+				new Object[]{order_no},
 				new RowMapper<OrderItem>(){ 
 					@Override
 					public OrderItem mapRow(ResultSet rs, int rownum) throws SQLException {
@@ -49,13 +50,13 @@ public class OrderItemDao {
 					}
 				}		
 			);	
-	
+		System.out.println("orderItemDao의 select 끝남");
 		return orderItemList;
 		
 	
 	}
 
-	public void insert(List<Cart> cartlist, String loginID, int orderNo) throws SQLException {
+	public void insert(List<Cart> cartlist, String loginID, int orderNo) {
 		Integer pk = null;
 		String sql = "insert into orderitems (order_no,"
 				+ " product_no, orderitem_amount, orderitem_price) values(?,?,?,?)";
