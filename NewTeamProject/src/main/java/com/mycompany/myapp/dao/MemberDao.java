@@ -20,10 +20,11 @@ public class MemberDao {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 	
+	// ����媛���
 	public String insert(Member member){
 		String sql = "insert into members"
 				+ " (member_id, member_name, member_password) "
-				+ "values (?,?, ?)";
+				+ "values (?, ?, ?)";
 		
 		KeyHolder keyHolder=new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator(){
@@ -42,12 +43,10 @@ public class MemberDao {
 	}
 	
 	
-	//로그인하기 위해 id,password 등 개인정보 가져옴!
-	public Member select(String memberID)throws SQLException{
+	//濡�洹몄�명��湲� ���� id,password �� 媛��몄��蹂� 媛��몄��!
+	public Member select(String memberID){
 		
 		String sql = "select * from members where member_id =?";
-	
-		
 		Member member=jdbcTemplate.queryForObject(sql,
 				new Object[] {memberID},
 				new RowMapper<Member>() { 

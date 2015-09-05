@@ -33,26 +33,22 @@ public class ProductController {
 	public String list(@RequestParam(defaultValue="1") int pageNo, Model model, HttpSession session){
 		logger.info("pageNo:"+pageNo);	
 		
-		//페이징을 위한 변수 선언
 				int rowsPerPage = 10;
 				int pagesPerGroup =5;
 				
-				//전체 게시물 수 
 				int totalProductNo= productService.getTotalProductNo();
 				
-				//전체 페이지 수 
+				//��泥� ���댁� �� 
 				int totalPageNo = totalProductNo/rowsPerPage;
 				if(totalProductNo%rowsPerPage!=0){
 					totalPageNo ++;
 				}
 				
-				//전체 그룹 수
 				int totalGroupNo = totalPageNo/pagesPerGroup;
 				if(totalGroupNo%pagesPerGroup!=0){
 					totalGroupNo ++;
 				}
 				
-				//현재 그룹 번호, 시작페이지 번호, 끝 페이지 번호	
 				int groupNo = (pageNo-1)/pagesPerGroup +1;
 				int startPageNo = (groupNo-1)*pagesPerGroup +1;
 				int endPageNo = startPageNo + pagesPerGroup-1;
@@ -60,14 +56,10 @@ public class ProductController {
 					endPageNo = totalPageNo;
 				}
 				
-				//현재 페이지 게시물 리스트
 				List<Product> list =productService.getPage(pageNo,rowsPerPage);
-				//이 list를 어떻게 해야 jsp로 보낼 수 있을 까? request로 해주자
+
 				/*request.setAttribute("list", list);*/
 				
-				
-				//View로 넘길 데이터
-				//꼭 편리할 때만 request를 쓰고 주로 model을 사용함
 				model.addAttribute("pagesPerGroup", pagesPerGroup);
 				model.addAttribute("totalPageNo", totalPageNo);
 				model.addAttribute("totalGroupNo", totalGroupNo);

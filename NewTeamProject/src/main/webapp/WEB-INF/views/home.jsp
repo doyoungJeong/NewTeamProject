@@ -142,6 +142,7 @@
 						<li><a href="photo/list" target="iframe">사진 게시판</a></li>
 						<li><a href="file/list" target="iframe">자료 게시판</a></li>
 						<li><a href="teamProduct/teamProductList" target="iframe">팀 프로젝트 게시판</a></li>
+						<li><a href="login/list" target="iframe">로그인</a></li>
 						
 					</ul>
 				</div>
