@@ -28,7 +28,7 @@ public class CartDao {
 	public Product select(int product_no){
 		
 		String sql = "select * from products where product_no=?";
-		Product product= jdbcTemplate.queryForObject(    // 媛앹껜 �븯�굹留뚯쓣 �쐞�븳 query
+		Product product= jdbcTemplate.queryForObject(    // 揶쏆빘猿� 占쎈릭占쎄돌筌띾슣�뱽 占쎌맄占쎈립 query
 				sql,
 				new Object[] {product_no},
 				new RowMapper<Product>() {
@@ -88,12 +88,12 @@ public class CartDao {
 		String sql = "select p.product_no, p.product_name, p.product_price,c.cart_amount, c.cart_totalprice from "
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? ";
 		
-		List<Cart> list = jdbcTemplate.query(   //  query由ы꽩 ���엯�씠 list
+		List<Cart> list = jdbcTemplate.query(   //  query�뵳�뗪쉘 占쏙옙占쎌뿯占쎌뵠 list
 				sql,
-				new Object[] {loginID},// ? �닔 留뚰겮 �씠 怨녹뿉 媛믪쓣 �굹�뿴
-				new RowMapper<Cart>() { // sql�뿉�꽌 媛��졇�삩 移쇰읆�쓽 媛믪쓣 dto�뿉 �븘�뱶�뿉 留듯븨 �떆�궎�뒗 寃껋쓣 RowMapper濡� �븳�떎.
+				new Object[] {loginID},// ? 占쎈땾 筌띾슦寃� 占쎌뵠 �⑤끃肉� 揶쏅�れ뱽 占쎄돌占쎈였
+				new RowMapper<Cart>() { // sql占쎈퓠占쎄퐣 揶쏉옙占쎌죬占쎌궔 燁살눖�쓥占쎌벥 揶쏅�れ뱽 dto占쎈퓠 占쎈툡占쎈굡占쎈퓠 筌띾벏釉� 占쎈뻻占쎄텕占쎈뮉 野껉퍔�뱽 RowMapper嚥∽옙 占쎈립占쎈뼄.
 
-					@Override // �슦由ш� �븣�뜕 rs , 紐� 媛쒖쓽 �뻾�쓣 媛��졇�솕�뒗媛� rowNum
+					@Override // 占쎌뒭�뵳�덌옙 占쎈르占쎈쐲 rs , 筌륅옙 揶쏆뮇�벥 占쎈뻬占쎌뱽 揶쏉옙占쎌죬占쎌넅占쎈뮉揶쏉옙 rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -117,12 +117,12 @@ public class CartDao {
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? limit ?, ?";
 
 
-		List<Cart> list = jdbcTemplate.query(   //  query由ы꽩 ���엯�씠 list
+		List<Cart> list = jdbcTemplate.query(   //  query�뵳�뗪쉘 占쏙옙占쎌뿯占쎌뵠 list
 				sql,
-				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? �닔 留뚰겮 �씠 怨녹뿉 媛믪쓣 �굹�뿴
-				new RowMapper<Cart>() { // sql�뿉�꽌 媛��졇�삩 移쇰읆�쓽 媛믪쓣 dto�뿉 �븘�뱶�뿉 留듯븨 �떆�궎�뒗 寃껋쓣 RowMapper濡� �븳�떎.
+				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? 占쎈땾 筌띾슦寃� 占쎌뵠 �⑤끃肉� 揶쏅�れ뱽 占쎄돌占쎈였
+				new RowMapper<Cart>() { // sql占쎈퓠占쎄퐣 揶쏉옙占쎌죬占쎌궔 燁살눖�쓥占쎌벥 揶쏅�れ뱽 dto占쎈퓠 占쎈툡占쎈굡占쎈퓠 筌띾벏釉� 占쎈뻻占쎄텕占쎈뮉 野껉퍔�뱽 RowMapper嚥∽옙 占쎈립占쎈뼄.
 
-					@Override // �슦由ш� �븣�뜕 rs , 紐� 媛쒖쓽 �뻾�쓣 媛��졇�솕�뒗媛� rowNum
+					@Override // 占쎌뒭�뵳�덌옙 占쎈르占쎈쐲 rs , 筌륅옙 揶쏆뮇�벥 占쎈뻬占쎌뱽 揶쏉옙占쎌죬占쎌넅占쎈뮉揶쏉옙 rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -131,7 +131,7 @@ public class CartDao {
 						cart.setCartAmount(rs.getInt("cart_amount"));
 						cart.setCartTotalPrice(rs.getString("cart_totalPrice"));
 						return cart;
-					} // �뻾�쓣 媛�吏�怨� ���꽌 dto�뿉 �뼱�뼸寃� ���옣�븷 寃껋씤媛�.	
+					} // 占쎈뻬占쎌뱽 揶쏉옙筌욑옙�⑨옙 占쏙옙占쎄퐣 dto占쎈퓠 占쎈선占쎈섯野껓옙 占쏙옙占쎌삢占쎈막 野껉퍔�뵥揶쏉옙.	
 				}        
  			);
 		return list;
