@@ -26,6 +26,12 @@ public class CartController {
 		private CartService cartService;
 		
 		
+		@RequestMapping("/product/delete")
+		public String delete(String longinID){
+			cartService.remove("r");
+			return  "redirec:/product/delete";
+		}
+		
 		@RequestMapping("/product/showCart")
 		public String showCart(Model model){
 			List<Cart> list = cartService.getCart("r");
