@@ -16,7 +16,7 @@
 				margin: 0px auto;
 				background-color: #292929;
 				color: #FFFFFF;
-				background-image: url("resources/image/space.jpg");
+				/* background-image: url("resources/image/space.jpg"); */
 			
 			}	
 			/*------------------------------------*/				
@@ -115,7 +115,7 @@
 	<body>
 		<div id="page">
 			<div id="header">
-				<h1>SpringProgramming</h1>
+				<h1>Shopping Mall</h1>
 			</div>
 			
 			<div id="content1">
@@ -150,7 +150,7 @@
 			</div>
 			
 			<div id="footer">
-				<h5>DoyoungJeong</h5>
+				<h5>Team4</h5>
 			</div>
 		</div>
 	</body>
