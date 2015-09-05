@@ -28,7 +28,7 @@ public class CartDao {
 	public Product select(int product_no){
 		
 		String sql = "select * from products where product_no=?";
-		Product product= jdbcTemplate.queryForObject(    // æ¶ì†ë¹˜çŒ¿ï¿½ å ìˆë¦­å ì„ëŒç­Œë¾ìŠ£ï¿½ë±½ å ìŒë§„å ìˆë¦½ query
+		Product product= jdbcTemplate.queryForObject(    // ?¶?†ë¹˜çŒ¿ï¿? ? ?ˆë¦?? ?„?Œç­Œë¾?Š£ï¿½ë±½ ? ?Œë§„å ?ˆë¦? query
 				sql,
 				new Object[] {product_no},
 				new RowMapper<Product>() {
@@ -88,12 +88,12 @@ public class CartDao {
 		String sql = "select p.product_no, p.product_name, p.product_price,c.cart_amount, c.cart_totalprice from "
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? ";
 		
-		List<Cart> list = jdbcTemplate.query(   //  queryï¿½ëµ³ï¿½ë—ªì‰˜ å ì™ì˜™å ìŒë¿¯å ìŒëµ  list
+		List<Cart> list = jdbcTemplate.query(   //  queryï¿½ëµ³ï¿½ë—ª?‰˜ ? ?™?˜™? ?Œë¿?? ?Œëµ? list
 				sql,
-				new Object[] {loginID},// ? å ìˆë•¾ ç­Œë¾ìŠ¦å¯ƒï¿½ å ìŒëµ  ï¿½â‘¤ëƒè‚‰ï¿½ æ¶ì…ï¿½ã‚Œë±½ å ì„ëŒå ìˆì˜€
-				new RowMapper<Cart>() { // sqlå ìˆí“ å ì„í£ æ¶ì‰ì˜™å ìŒì£¬å ìŒê¶” ç‡ì‚´ëˆ–ï¿½ì“¥å ìŒë²¥ æ¶ì…ï¿½ã‚Œë±½ dtoå ìˆí“  å ìˆíˆ¡å ìˆêµ¡å ìˆí“  ç­Œë¾ë²é‡‰ï¿½ å ìˆë»»å ì„í…•å ìˆë®‰ é‡ê»‰í”ï¿½ë±½ RowMapperåš¥âˆ½ì˜™ å ìˆë¦½å ìˆë¼„.
+				new Object[] {loginID},// ? ? ?ˆ?•¾ ç­Œë¾?Š¦å¯ƒï¿½ ? ?Œëµ? ï¿½â‘¤?ƒ?‚‰ï¿? ?¶?…ï¿½ã‚Œë±? ? ?„?Œ? ?ˆ??
+				new RowMapper<Cart>() { // sql? ?ˆ?“ ? ?„?£ ?¶?‰?˜™? ?Œì£¬å ?Œê¶? ?‡?‚´?ˆ–ï¿½ì“¥? ?Œë²? ?¶?…ï¿½ã‚Œë±? dto? ?ˆ?“  ? ?ˆ?ˆ¡? ?ˆêµ¡å ?ˆ?“  ç­Œë¾ë²é‡‰ï¿? ? ?ˆë»»å ?„?…•? ?ˆë®? ?‡ê»‰í”ï¿½ë±½ RowMapper?š¥?ˆ½?˜™ ? ?ˆë¦½å ?ˆë¼?.
 
-					@Override // å ìŒë’­ï¿½ëµ³ï¿½ëŒì˜™ å ìˆë¥´å ìˆì² rs , ç­Œë¥…ì˜™ æ¶ì†ë®‡ï¿½ë²¥ å ìˆë»¬å ìŒë±½ æ¶ì‰ì˜™å ìŒì£¬å ìŒë„…å ìˆë®‰æ¶ì‰ì˜™ rowNum
+					@Override // ? ?Œ?’­ï¿½ëµ³ï¿½ëŒ?˜™ ? ?ˆë¥´å ?ˆ?² rs , ç­Œë¥…?˜™ ?¶?†ë®‡ï¿½ë²? ? ?ˆë»¬å ?Œë±? ?¶?‰?˜™? ?Œì£¬å ?Œ?„…? ?ˆë®‰æ¶?‰?˜™ rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -117,12 +117,12 @@ public class CartDao {
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? limit ?, ?";
 
 
-		List<Cart> list = jdbcTemplate.query(   //  queryï¿½ëµ³ï¿½ë—ªì‰˜ å ì™ì˜™å ìŒë¿¯å ìŒëµ  list
+		List<Cart> list = jdbcTemplate.query(   //  queryï¿½ëµ³ï¿½ë—ª?‰˜ ? ?™?˜™? ?Œë¿?? ?Œëµ? list
 				sql,
-				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? å ìˆë•¾ ç­Œë¾ìŠ¦å¯ƒï¿½ å ìŒëµ  ï¿½â‘¤ëƒè‚‰ï¿½ æ¶ì…ï¿½ã‚Œë±½ å ì„ëŒå ìˆì˜€
-				new RowMapper<Cart>() { // sqlå ìˆí“ å ì„í£ æ¶ì‰ì˜™å ìŒì£¬å ìŒê¶” ç‡ì‚´ëˆ–ï¿½ì“¥å ìŒë²¥ æ¶ì…ï¿½ã‚Œë±½ dtoå ìˆí“  å ìˆíˆ¡å ìˆêµ¡å ìˆí“  ç­Œë¾ë²é‡‰ï¿½ å ìˆë»»å ì„í…•å ìˆë®‰ é‡ê»‰í”ï¿½ë±½ RowMapperåš¥âˆ½ì˜™ å ìˆë¦½å ìˆë¼„.
+				new Object[] {loginID, (pageNo-1)*rowsPerPage , rowsPerPage},// ? ? ?ˆ?•¾ ç­Œë¾?Š¦å¯ƒï¿½ ? ?Œëµ? ï¿½â‘¤?ƒ?‚‰ï¿? ?¶?…ï¿½ã‚Œë±? ? ?„?Œ? ?ˆ??
+				new RowMapper<Cart>() { // sql? ?ˆ?“ ? ?„?£ ?¶?‰?˜™? ?Œì£¬å ?Œê¶? ?‡?‚´?ˆ–ï¿½ì“¥? ?Œë²? ?¶?…ï¿½ã‚Œë±? dto? ?ˆ?“  ? ?ˆ?ˆ¡? ?ˆêµ¡å ?ˆ?“  ç­Œë¾ë²é‡‰ï¿? ? ?ˆë»»å ?„?…•? ?ˆë®? ?‡ê»‰í”ï¿½ë±½ RowMapper?š¥?ˆ½?˜™ ? ?ˆë¦½å ?ˆë¼?.
 
-					@Override // å ìŒë’­ï¿½ëµ³ï¿½ëŒì˜™ å ìˆë¥´å ìˆì² rs , ç­Œë¥…ì˜™ æ¶ì†ë®‡ï¿½ë²¥ å ìˆë»¬å ìŒë±½ æ¶ì‰ì˜™å ìŒì£¬å ìŒë„…å ìˆë®‰æ¶ì‰ì˜™ rowNum
+					@Override // ? ?Œ?’­ï¿½ëµ³ï¿½ëŒ?˜™ ? ?ˆë¥´å ?ˆ?² rs , ç­Œë¥…?˜™ ?¶?†ë®‡ï¿½ë²? ? ?ˆë»¬å ?Œë±? ?¶?‰?˜™? ?Œì£¬å ?Œ?„…? ?ˆë®‰æ¶?‰?˜™ rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
 						cart.setProductNo(rs.getInt("product_no"));
@@ -131,7 +131,7 @@ public class CartDao {
 						cart.setCartAmount(rs.getInt("cart_amount"));
 						cart.setCartTotalPrice(rs.getString("cart_totalPrice"));
 						return cart;
-					} // å ìˆë»¬å ìŒë±½ æ¶ì‰ì˜™ç­Œìš‘ì˜™ï¿½â‘¨ì˜™ å ì™ì˜™å ì„í£ dtoå ìˆí“  å ìˆì„ å ìˆì„¯é‡ê»“ì˜™ å ì™ì˜™å ìŒì‚¢å ìˆë§‰ é‡ê»‰í”ï¿½ëµ¥æ¶ì‰ì˜™.	
+					} // ? ?ˆë»¬å ?Œë±? ?¶?‰?˜™ç­Œìš‘?˜™ï¿½â‘¨?˜™ ? ?™?˜™? ?„?£ dto? ?ˆ?“  ? ?ˆ?„ ? ?ˆ?„¯?‡ê»“ì˜™ ? ?™?˜™? ?Œ?‚¢? ?ˆë§? ?‡ê»‰í”ï¿½ëµ¥?¶?‰?˜™.	
 				}        
  			);
 		return list;
@@ -146,5 +146,13 @@ public class CartDao {
 			);
 		return rows;
 	}
+	
+	public int selectCount(){
+		String sql = "select count(*) from products";
+		int rows = jdbcTemplate.queryForObject(sql, Integer.class);
+		return rows;
+	}
+	
+	
 
 }

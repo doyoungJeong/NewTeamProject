@@ -25,9 +25,24 @@ public class CartService {
 		cartDao.delete(loginID);
 		}
 	
-	//카트 보기
+	//카트 페이징
 	public List<Cart>  getPage(String loginID, int pageNo, int rowsPerPage) {
 		List<Cart> list = cartDao.selectByPageNo(loginID, pageNo, rowsPerPage);
 		return list;
 	}
+	
+	//카트 다 불러오기
+	public List<Cart> getCart(String loginID){
+		List<Cart> list = cartDao.select("r");
+		return list;
+	}
+	
+	//카트에 총 상품 수 구하기
+	public int getTotalproductNo() {
+		int rows = cartDao.selectCount();
+		return rows;
+	}
+	
+	
+	
 }
