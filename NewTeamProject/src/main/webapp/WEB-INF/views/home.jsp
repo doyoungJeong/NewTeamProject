@@ -141,10 +141,9 @@
 						<li><a href="product/productList" target="iframe">상품 게시판</a></li>
 						<li><a href="photo/list" target="iframe">사진 게시판</a></li>
 						<li><a href="file/list" target="iframe">자료 게시판</a></li>
-						<li><a href="teamProduct/teamProductList" target="iframe">팀 프로젝트 게시판</a></li>
 						<li><a href="login/list" target="iframe">로그인</a></li>
+						<li><a href="product/showCart" target="iframe">장바구니보기</a></li>
 						<li><a href="order/list" target="iframe">주문정보</a></li>
-						<li><a href="orderItem/list" target="iframe">주문상세정보</a></li>
 						
 					</ul>
 				</div>

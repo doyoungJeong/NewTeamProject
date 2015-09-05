@@ -94,6 +94,7 @@
 				
 			</tr>
 			
+			
 			<c:forEach var="order" items="${list}">
 				<tr>
 					<td>${order.orderNo}</td>
