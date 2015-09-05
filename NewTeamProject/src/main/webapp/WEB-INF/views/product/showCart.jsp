@@ -30,6 +30,9 @@
 				text-align: center;
 				margin: 10px;
 			}
+			#buttonGroup > a {
+				text-decoration: none;
+			}
 			#pager {
 				margin-top: 5px;
 				text-align: center;
@@ -84,9 +87,10 @@
 		</table>
 			
 		<div id="buttonGroup">
-			<a href="product_order">
+			<a href="#">
 				주문하기
-			</a>
+			</a>&nbsp;&nbsp;&nbsp;
+			<a href="/product/delete">카트 비우기</a>
 		</div>
 	</body>
 </html>
