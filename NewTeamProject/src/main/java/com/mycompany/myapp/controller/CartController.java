@@ -30,24 +30,24 @@ public class CartController {
 		private OrderService orderService;
 		
 		@RequestMapping("order/result")
-		public String result(String longinID,Model model){
+		public String result(String longinID,Model model, HttpSession session){
 			logger.info("result();");
-			List<Cart> list = cartService.getCart("q");
-			cartService.order("q", list);
+			List<Cart> list = cartService.getCart((String)session.getAttribute("memberId"));
+			cartService.order((String)session.getAttribute("memberId"), list);
 			return  "order/result";
 		}
 		
 		
 		@RequestMapping("product/delete")
-		public String delete(String longinID){
+		public String delete(String longinID, HttpSession session){
 			logger.info("delete();");
-			cartService.remove("q");
+			cartService.remove((String)session.getAttribute("memberId"));
 			return  "redirect:/product/showCart";
 		}
 		
 		@RequestMapping("product/showCart")
-		public String showCart(Model model){
-			List<Cart> list = cartService.getCart("q");
+		public String showCart(Model model, HttpSession session){
+			List<Cart> list = cartService.getCart((String)session.getAttribute("memberId"));
 			model.addAttribute("list", list);
 			return "product/showCart";
 		}

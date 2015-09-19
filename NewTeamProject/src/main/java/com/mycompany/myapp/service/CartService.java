@@ -39,7 +39,7 @@ public class CartService {
 	
 	//카트 다 불러오기
 	public List<Cart> getCart(String loginID){
-		List<Cart> list = cartDao.select("q");
+		List<Cart> list = cartDao.select(loginID);
 		return list;
 	}
 	

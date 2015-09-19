@@ -9,7 +9,7 @@ import com.mycompany.myapp.dao.ProductDao;
 import com.mycompany.myapp.dto.Product;
 
 
-//스프링이 boardService객체를 알아서 생성하게 한다.
+//占썬�쏙옙占쏙�占쏙옙占� boardService揶�占쏙㎗��占쏙옙 占쏙옙占쏙옙占쏙옙 占쏙옙占쎄�占쏙옙野�占� 占쏙옙占쏙옙.
 @Component
 public class ProductService {
 
@@ -24,7 +24,9 @@ public class ProductService {
 	}
 	
 	public Product getProduct(int productNo) {
+		System.out.println("getProduct�ㅼ�댁��");
 		Product product = productDao.selectByPk(productNo);
+		System.out.println("getProduct���� selectpk��");
 		return product;
 	}
 	

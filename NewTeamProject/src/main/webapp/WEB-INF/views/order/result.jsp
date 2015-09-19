@@ -67,30 +67,6 @@
 		</style>
 	</head>
 	<body>
-		<h4> ${memberId } 님의 cart 리스트 </h4>
-		<table>
-			<tr>
-				<th style="width:50px">품번</th>
-				<th >상품이름</th>
-				<th style="width:60px">수량</th>
-				<th style="width:60px">가격</th>
-			</tr>
-			
-			<c:forEach var="cart" items="${list}">
-				<tr>
-					<td>${cart.productNo}</td>
-					<td>${cart.productName}</td>
-					<td>${cart.cartAmount}</td>
-					<td>${cart.cartTotalPrice}</td>
-				</tr>	
-			</c:forEach>
-		</table>
-			
-		<div id="buttonGroup">
-			<a href="../order/result" >주문하기</a>
-				
-			</a>&nbsp;&nbsp;&nbsp;
-			<a href="delete">카트 비우기</a>
-		</div>
+	주문완료
 	</body>
 </html>

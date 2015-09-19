@@ -79,13 +79,46 @@
 	<body>
 		<h4>게시물보기</h4>
 		<div id="part1">
-			<div id="part1_1">   <!-- el은 결국 get메소드를 호출하는 것이다. -->
+		<%-- 	<div id="part1_1">   <!-- el은 결국 get메소드를 호출하는 것이다. -->
 				<span class="title">상품이름:</span> <span class="content"></span>${product.productName}<br/>
 				<span class="title">가격: </span> <span class="content"></span>${product.productPrice}<br/>
 				<span class="title">상품설명: </span> <span class="content"></span>${product.productInfo}<br/>
-				<span class="title">수량:</span>
-					<td><input type="text" name="amount" /></td>
+				<span class="title">상품번호 </span> <span class="content"></span>${product.productInfo}<br/>
 			</div>
+			 --%>
+		
+			
+		 	<form method="POST"  action="insertCart"  >
+				<table id="form_table">
+				<tr>
+						<td>상품번호:</td>
+						<td><input type="hidden"  name="productNo"  value="${product.productNo}"/>${product.productNo}</td>
+					</tr>
+					<tr>
+						<td>상품이름:</td>
+						<td><input type="hidden" name="productName" />${product.productName}</td>
+					</tr>
+					<tr>
+						<td>가격:</td>
+						<td><input type="hidden"name="productPrice" />${product.productPrice}</td>
+					</tr>
+					<tr>
+						<td>상품설명:</td>
+						<td><input type="hidden"name="productInfo" />${product.productInfo}</td>
+					</tr>
+					<tr>
+						<td>수량:</td>
+						<td><input type="text" name="amount"  value="1"/></td>
+					</tr>
+					
+					<tr>
+					<td>
+						<input  type="submit" value="장바구니넣기" />	
+						<td>
+					</tr>
+					
+				</table>	
+			</form> 
 			
 			 <div id="part1_2">
 			<!-- 동적으로 context의 이름을 받아내는 것이다. -->
@@ -94,11 +127,11 @@
 				
 			</div> 
 		</div>
-		
+		<%-- <a href="showCart?productNo=${product.productNo}"/> --%>
 		
 		<div id= "buttonGroup" >
 			<a href="productList">목록</a>
-			<a href="cartList?memberId=${member.memberId} ">장바구니담기</a>
+			
 		</div>
 	</body>
 </html>

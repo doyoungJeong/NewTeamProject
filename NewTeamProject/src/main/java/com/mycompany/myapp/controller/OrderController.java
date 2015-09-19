@@ -2,6 +2,8 @@ package com.mycompany.myapp.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,32 +24,32 @@ public class OrderController {
 	@Autowired
 	private OrderItemService orderItemService;
 	
-	//아디디 session이용해서 만들어 놓기!!
+	//占쏙옙占쏙옙占쏙옙 session占쎈��占썩�븝옙��占쏙옙 筌�占쏙옙�쇽옙占� 占쏙옙疫뀐옙!!
 	String tempID= "t";
 	
 	@RequestMapping("/order/list")
-	public String list(@RequestParam(defaultValue="1") int pageNo, Model model){
+	public String list(@RequestParam(defaultValue="1") int pageNo, Model model,HttpSession session){
 		
 		
-		//session으로 get해서 아이디 가져오기!!
+		//session占쎌�곤옙 get占쎈��占쏙옙 占쏙옙占쎈��占쏙옙 揶�占쏙옙紐�占썬�븍┛!!
 		
-		List<Order> list= orderService.getOrder(tempID);
+		List<Order> list= orderService.getOrder((String)session.getAttribute("memberId"));
 		model.addAttribute("list", list);
 		return "order/list";
 	}
 	
 	@RequestMapping("/order/detail")
-	public String detail(int orderNo, Model model){
+	public String detail(int orderNo, Model model,HttpSession session){
 		
 		
 		
-		//session으로 아이디 가져올것 
+		//session占쎌�곤옙 占쏙옙占쎈��占쏙옙 揶�占쏙옙紐�占싼�占� 
 		
 		
-		System.out.println("orderController의 detail들어옴");
-		List<OrderItem> list = orderItemService.getOrderItems(tempID, orderNo);
+		System.out.println("orderController占쏙옙 detail占썬�쇽옙��占쏙옙");
+		List<OrderItem> list = orderItemService.getOrderItems((String)session.getAttribute("memberId"), orderNo);
 		model.addAttribute("list", list);
-		System.out.println("orderController의 detail끝남");
+		System.out.println("orderController占쏙옙 detail占쏙옙占쏙옙");
 		return "order/detail";
 		
 	}

@@ -105,9 +105,7 @@
 			
 		</table>
 		
-		<div id="buttonGroup">
-			<a >글쓰기</a>
-		</div>
+		
 	</body>
 </html>
 

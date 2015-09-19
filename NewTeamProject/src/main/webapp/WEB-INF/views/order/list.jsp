@@ -83,7 +83,7 @@
 	</head>
 	
 	<body>
-		<h4>주문 정보</h4>
+		<h4> ${memberId } 님의 주문 정보</h4>
 		
 		<table>
 			<tr>
@@ -107,7 +107,7 @@
 		</table>
 		
 		<div id="buttonGroup">
-			<a >글쓰기</a>
+			<a >항목클릭</a>
 		</div>
 	</body>
 </html>

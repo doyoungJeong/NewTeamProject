@@ -10,12 +10,17 @@ import com.mycompany.myapp.dao.OrderDao;
 import com.mycompany.myapp.dao.OrderItemDao;
 import com.mycompany.myapp.dto.Cart;
 import com.mycompany.myapp.dto.Order;
+
 @Component
 public class OrderService {
 	
 	@Autowired
 	private OrderDao orderDao;
+	
+	@Autowired
 	private CartDao cartDao;
+	
+	@Autowired
 	private OrderItemDao orderItemDao;
 	
 	public void ordering(String loginID)  {
@@ -29,9 +34,9 @@ public class OrderService {
 
 	
 	public List<Order> getOrder(String loginID) {
-		System.out.println("getorder메소드들어옴");
+		System.out.println("getorder硫������ㅼ�댁��");
 			List<Order> list = orderDao.select(loginID);
-			System.out.println("getorde.select 끝");
+			System.out.println("getorde.select ��");
 			return list;
 	}
 }

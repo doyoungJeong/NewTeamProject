@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.mycompany.myapp.dto.Cart;
 import com.mycompany.myapp.dto.Product;
 import com.mycompany.myapp.service.CartService;
 import com.mycompany.myapp.service.ProductService;
@@ -25,6 +26,8 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
 	private CartService cartService;
 	
 	@RequestMapping("/product/productList")
@@ -36,7 +39,7 @@ public class ProductController {
 				
 				int totalProductNo= productService.getTotalProductNo();
 				
-				//��泥� ���댁� �� 
+				//占쏙옙筌ｏ옙 占쏙옙占쎈��占� 占쏙옙 
 				int totalPageNo = totalProductNo/rowsPerPage;
 				if(totalProductNo%rowsPerPage!=0){
 					totalPageNo ++;
@@ -79,13 +82,25 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/product/insertCart")
-		public String insertCart(int productNo, Model model) {
+		public String insertCart( String productNo , String amount, Model model, HttpSession session) {
+		System.out.println("insertcart�ㅼ�댁��");
+		logger.info("showCart()");
 		
-			Product product = productService.getProduct(productNo);
-//			Cart cart = 
-			model.addAttribute("product", product);
-					
-			return "redirect:/product/showCart";
+		System.out.println(productNo);
+			Product product = productService.getProduct(Integer.parseInt(productNo));
+		//Product product = productService.getProduct((productNo));
+			
+			logger.info("getProduct��");
+			Cart cart = new Cart();
+			cart.setCartAmount(Integer.valueOf(amount));
+			cart.setCartTotalPrice(Integer.toString(product.getProductPrice()) +"*" + amount);
+			
+			cartService.cart_insert(product, (String)session.getAttribute("memberId"), cart);
+			System.out.println("cartinsert��");
+			//model.addAttribute("product", session.getAttribute("memberId"));
+			
+			
+			return "redirect:/product/productList";
 		}	
 	
 	
