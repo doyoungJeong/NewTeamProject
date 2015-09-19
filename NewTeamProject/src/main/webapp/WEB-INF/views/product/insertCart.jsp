@@ -9,6 +9,11 @@
 		table {
 			color: white;
 		}
+		
+		body{
+		
+			color:white;
+		}
 		</style>
 
 	</head>

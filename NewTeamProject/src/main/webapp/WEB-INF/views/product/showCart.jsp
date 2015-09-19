@@ -7,6 +7,7 @@
 		<meta charset=" UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
+			
 			h4 {
 				color: white;
 			}
@@ -32,6 +33,10 @@
 			}
 			#buttonGroup > a {
 				text-decoration: none;
+				color: white;
+			}
+			#buttonGroup > a:hover{
+				color:gray;
 			}
 			#pager {
 				margin-top: 5px;

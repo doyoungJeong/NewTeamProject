@@ -7,18 +7,16 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
-			body {
-				color: white;
-			}
 			table {
 				width: 100%;
 				border-collapse: collapse;
 				font-size: small;
 			}
-			table, th, td {
+			table, th, td, a {
 				border: 1px solid white;
 				text-align: center;
 				height:25px;
+				color:white;
 			}
 			th {
 				background-color: gray;
@@ -77,6 +75,11 @@
 			
 			.title:hover{
 				color:gray;
+			}
+			
+			h4{
+				color:white;
+			
 			}
 			
 		</style>
