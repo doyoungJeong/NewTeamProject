@@ -14,8 +14,16 @@ public class MemberService {
 	@Autowired
 	private MemberDao memberDao;
 	
-	public void addMember(Member member){
-		memberDao.insert(member);
+	public String addMember(Member member){
+		String ck=null;
+		Member mem=memberDao.select(member.getMemberId());
+		if(mem==null){
+			ck="success";
+			memberDao.insert(member);
+		}else{
+			ck="fail";
+		}
+		return ck;
 	}
 	
 	public String login(String memberID, String memberPW, HttpSession session){

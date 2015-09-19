@@ -20,6 +20,7 @@
 				<a href="logout"><button>로그아웃</button></a>
 			</div>
 		</c:if>
+		
 		<c:if test="${result=='wrong Password'}">
 			<h4>비밀번호가 틀렸습니다.</h4>
 		</c:if>

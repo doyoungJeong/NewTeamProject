@@ -37,21 +37,20 @@ public class MemberController {
 	}
 	
 	@RequestMapping("/login/add")
-	public String add(String memberID, String memberName, String memberPW){
+	public String add(String memberID, String memberName, String memberPW, Model model){
 		Member member=new Member();
 		member.setMemberId(memberID);
 		member.setMemberName(memberName);
 		member.setMemberPW(memberPW);
-		memberService.addMember(member);
-		
-		return "redirect:list";
+		String ck=memberService.addMember(member);
+		model.addAttribute("ck", ck);
+		return "login/add";
 	}
 	
 	@RequestMapping("/login/logout")
 	public String logout(HttpSession session){
-		session.removeAttribute("memberID");
+		session.removeAttribute("memberId");
 		return "redirect:list";
 	}
-
 	
 }
