@@ -25,7 +25,7 @@ public class MemberService {
 		if(member!=null){
 			if(memberID.equals(member.getMemberId())){
 				if(memberPW.equals(member.getMemberPW())){
-					session.setAttribute("memberID", memberID);
+					session.setAttribute("memberId", memberID);
 					state="success";
 				}
 				else{
@@ -36,6 +36,7 @@ public class MemberService {
 		else{
 			state="wrong ID";
 		}
+		
 		return state;
 
 	}

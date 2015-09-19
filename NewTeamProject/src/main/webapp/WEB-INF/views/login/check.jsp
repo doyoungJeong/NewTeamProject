@@ -15,16 +15,16 @@
 	</head>
 	<body>
 		<c:if test="${result=='success'}">
-			${memberID}님<h4>로그인 되었습니다.</h4>
-			<div id="new">
+			${memberId}님<h4>로그인 되었습니다.</h4>
+			<div>
 				<a href="logout"><button>로그아웃</button></a>
 			</div>
 		</c:if>
-		<c:if test="${result=='wrong Password' }">
+		<c:if test="${result=='wrong Password'}">
 			<h4>비밀번호가 틀렸습니다.</h4>
 		</c:if>
 		
-		<c:if test="${result='wrong ID'}">
+		<c:if test="${result=='wrong ID'}">
 			<h4>아이디가 틀렸습니다.</h4>
 		</c:if>
 	</body>

@@ -4,13 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 import com.mycompany.myapp.dto.Member;
@@ -46,7 +45,7 @@ public class MemberDao {
 	public Member select(String memberID){
 		
 		String sql = "select * from members where member_id =?";
-		Member member=jdbcTemplate.queryForObject(sql,
+		List<Member> list=jdbcTemplate.query(sql,
 				new Object[] {memberID},
 				new RowMapper<Member>() { 
 					@Override
@@ -59,6 +58,11 @@ public class MemberDao {
 					}
 				}
 			);
-			return member;
+			if(list.isEmpty()){
+				return null;
+			}else{
+				Member member=list.get(0);
+				return member;
+			}
 	}
 }

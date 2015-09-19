@@ -41,7 +41,6 @@ public class MemberController {
 		Member member=new Member();
 		member.setMemberId(memberID);
 		member.setMemberName(memberName);
-		System.out.println(member.getMemberName());
 		member.setMemberPW(memberPW);
 		memberService.addMember(member);
 		
@@ -53,4 +52,6 @@ public class MemberController {
 		session.removeAttribute("memberID");
 		return "redirect:list";
 	}
+
+	
 }
