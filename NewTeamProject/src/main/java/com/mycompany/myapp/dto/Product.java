@@ -5,6 +5,8 @@ public class Product {
 	private String productName;
 	private int productPrice;
 	private String productInfo;
+	
+	
 	private String originalFileName;
 	private String filesystemName;
 	private String contentType;

@@ -26,7 +26,7 @@ public class ProductDao {
 	
 	public List<Product> selectByPage(int pageNo, int rowsPerPage) {
 	   
-	      String sql = "select * from products order by product_no asc limit ?,?";
+	      String sql = "select product_no, product_name, product_price, product_info from products order by product_no asc limit ?,?";
 	      
 	      List<Product> list = jdbcTemplate.query(
 					sql,
@@ -62,9 +62,9 @@ public class ProductDao {
 						product.setProductInfo(rs.getString("product_info"));
 						
 						
-						product.setOriginalFileName(rs.getString("product_original_file_name"));
+					/*	product.setOriginalFileName(rs.getString("product_original_file_name"));
 						product.setFilesystemName(rs.getString("product_filesystem_name"));
-						product.setContentType(rs.getString("product_content_type"));
+						product.setContentType(rs.getString("product_content_type"));*/
 						return product;
 					}	
 				}
