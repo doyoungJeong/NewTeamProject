@@ -19,6 +19,10 @@
 			#new{
 				margin: 30px;
 			}
+			
+			h1{
+				margin: 30px;
+			}
 		
 		</style>
 	</head>
@@ -36,7 +40,7 @@
 		</c:if>
 		
 		<c:if test="${memberId != null }">
-			<h4>I AM &nbsp</h4> ${memberId} -o-
+			<h1>I AM &nbsp '${memberId}' -o-</h1>
 			<div id="new">
 				<a href="logout"><button>LOGOUT</button></a>
 			</div>

@@ -23,7 +23,7 @@
 		</c:if>
 		
 		<c:if test="${ck=='fail' }">
-			<h4>TRY AGAIN PLEASE T_T </h4>
+			<h4>ANOTHER ID PLEASE T_T </h4>
 		</c:if>
 	</body>
 </html>

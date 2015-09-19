@@ -12,23 +12,27 @@
 				color: white;
 				font-family:Play;
 			}
+			h1{
+				margin: 30px;
+			}
+			
 
 		</style>
 	</head>
 	<body>
 		<c:if test="${result=='success'}">
-			<h4>HELLO ^3^  </h4> ${memberId}~
+			<h1>HELLO ^3^ &nbsp&nbsp '${memberId}'~</h1>
 			<div>
-				<a href="logout"><button>LOGOUT</button></a>
+				&nbsp&nbsp&nbsp&nbsp&nbsp<a href="logout"><button>LOGOUT</button></a>
 			</div>
 		</c:if>
 		
 		<c:if test="${result=='wrong Password'}">
-			<h4>WRONG PASSWORD T_T </h4>
+			<h1>WRONG PASSWORD T_T </h1>
 		</c:if>
 		
 		<c:if test="${result=='wrong ID'}">
-			<h4>WRONG ID T_T </h4>
+			<h1>WRONG ID T_T </h1>
 		</c:if>
 	</body>
 </html>
