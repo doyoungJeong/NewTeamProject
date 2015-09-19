@@ -1,12 +1,15 @@
 package com.mycompany.myapp.service;
 
-import java.util.*;
+import java.util.List;
 
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-import com.mycompany.myapp.dao.*;
-import com.mycompany.myapp.dto.*;
+import com.mycompany.myapp.dao.CartDao;
+import com.mycompany.myapp.dao.OrderDao;
+import com.mycompany.myapp.dao.OrderItemDao;
+import com.mycompany.myapp.dto.Cart;
+import com.mycompany.myapp.dto.Product;
 
 @Component
 public class CartService {
@@ -15,35 +18,39 @@ public class CartService {
 	private CartDao cartDao;
 	@Autowired
 	private OrderDao orderDao;
+	
+	@Autowired
+	private OrderItemDao orderitemDao;
 
-	//Ä«Æ®¿¡ »óÇ° Ãß°¡
+	//Ä«Æ®ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ß°ï¿½
 	public void cart_insert(Product product, String loginID, Cart cart){
 		cartDao.insert(product, loginID, cart);
 	}
 	
-	//ÁÖ¹®ÇÏ±â
+	//ï¿½Ö¹ï¿½ï¿½Ï±ï¿½
 	public void order(String loginID, List<Cart> cart){
-		orderDao.insert(cart, loginID);
+		Integer orderNo = orderDao.insert(cart, loginID);
+		orderitemDao.insert(cart,loginID,orderNo);
 	}
 	
-	//Ä«Æ® ºñ¿ì±â
+	//Ä«Æ® ï¿½ï¿½ï¿½ï¿½
 	public void remove(String loginID) {
 		cartDao.delete(loginID);
 		}
 	
-	//Ä«Æ® ÆäÀÌÂ¡
+	//Ä«Æ® ï¿½ï¿½ï¿½ï¿½Â¡
 	public List<Cart>  getPage(String loginID, int pageNo, int rowsPerPage) {
 		List<Cart> list = cartDao.selectByPageNo(loginID, pageNo, rowsPerPage);
 		return list;
 	}
 	
-	//Ä«Æ® ´Ù ºÒ·¯¿À±â
+	//Ä«Æ® ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
 	public List<Cart> getCart(String loginID){
 		List<Cart> list = cartDao.select(loginID);
 		return list;
 	}
 	
-	//Ä«Æ®¿¡ ÃÑ »óÇ° ¼ö ±¸ÇÏ±â
+	//Ä«Æ®ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 	public int getTotalproductNo() {
 		int rows = cartDao.selectCount();
 		return rows;
