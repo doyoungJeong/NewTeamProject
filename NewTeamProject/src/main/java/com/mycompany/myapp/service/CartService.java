@@ -1,23 +1,29 @@
 package com.mycompany.myapp.service;
 
-import java.util.List;
+import java.util.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.*;
+import org.springframework.stereotype.*;
 
-import com.mycompany.myapp.dao.CartDao;
-import com.mycompany.myapp.dto.Cart;
-import com.mycompany.myapp.dto.Product;
+import com.mycompany.myapp.dao.*;
+import com.mycompany.myapp.dto.*;
 
 @Component
 public class CartService {
 	
 	@Autowired
 	private CartDao cartDao;
+	@Autowired
+	private OrderDao orderDao;
 
 	//카트에 상품 추가
 	public void cart_insert(Product product, String loginID, Cart cart){
 		cartDao.insert(product, loginID, cart);
+	}
+	
+	//주문하기
+	public void order(String loginID, List<Cart> cart){
+		orderDao.insert(cart, loginID);
 	}
 	
 	//카트 비우기
@@ -33,7 +39,7 @@ public class CartService {
 	
 	//카트 다 불러오기
 	public List<Cart> getCart(String loginID){
-		List<Cart> list = cartDao.select("r");
+		List<Cart> list = cartDao.select("q");
 		return list;
 	}
 	

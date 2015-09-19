@@ -30,9 +30,6 @@
 				text-align: center;
 				margin: 10px;
 			}
-			#buttonGroup > a {
-				text-decoration: none;
-			}
 			#pager {
 				margin-top: 5px;
 				text-align: center;
@@ -67,30 +64,45 @@
 		</style>
 	</head>
 	<body>
-		<h4> cart 리스트 </h4>
+		<h4>게시물 목록</h4>
 		<table>
 			<tr>
-				<th style="width:50px">품번</th>
+				<th style="width:50px">상품번호</th>
 				<th >상품이름</th>
-				<th style="width:60px">수량</th>
 				<th style="width:60px">가격</th>
+				<th style="width:60px">상세정보</th>
 			</tr>
 			
-			<c:forEach var="cart" items="${list}">
+			<c:forEach var="product" items="${list}">
 				<tr>
-					<td>${cart.productNo}</td>
-					<td>${cart.productName}</td>
-					<td>${cart.cartAmount}</td>
-					<td>${cart.cartTotalPrice}</td>
+					<td>${product.productNo}</td>
+					<td><a class="title" href="product_detail?productNo=${product.productNo}">${product.productName}</a></td> 
+					<td>${product.productPrice}</td>
+					<td>${product.productInfo}</td>
 				</tr>	
 			</c:forEach>
 		</table>
+		
+		<div id="pager">
+		
+			<a href="productList?pageNo=1">[처음]</a>
 			
-		<div id="buttonGroup">
-			<a href="../order/result" >주문하기</a>
-				
-			</a>&nbsp;&nbsp;&nbsp;
-			<a href="delete">카트 비우기</a>
+			<c:if test="${groupNo>1}">
+				<a href="productList?pageNo=${startPageNo-pagesPerGroup}">[이전]</a>
+			</c:if>
+				 
+				 
+			<c:forEach var="i" begin="${startPageNo}" end="${endPageNo}"> 
+				<a class="pageNo <c:if test="${pageNo==i}">selected</c:if>" href="productList?pageNo=${i}">${i}</a>
+			</c:forEach>
+			
+			<c:if test="${groupNo<totalGroupNo}">
+				<a href="productList?pageNo=${endPageNo + 1}">[다음]</a>
+			</c:if>
+			
+			<a href="productList?pageNo=${totalPageNo}">[맨끝]</a> 
 		</div>
+		
+		
 	</body>
 </html>

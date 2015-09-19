@@ -1,10 +1,7 @@
 package com.mycompany.myapp.controller;
 
-import java.io.File;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,9 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mycompany.myapp.dto.Product;
+import com.mycompany.myapp.service.CartService;
 import com.mycompany.myapp.service.ProductService;
 
 
@@ -28,8 +25,9 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
+	private CartService cartService;
 	
-	@RequestMapping("/product/list")
+	@RequestMapping("/product/productList")
 	public String list(@RequestParam(defaultValue="1") int pageNo, Model model, HttpSession session){
 		logger.info("pageNo:"+pageNo);	
 		
@@ -69,15 +67,26 @@ public class ProductController {
 				model.addAttribute("pageNo", pageNo);
 				model.addAttribute("list", list);
 				
-				return "product/list";
+				return "product/productList";
 			}
 
-	@RequestMapping("/product/detail")
+	@RequestMapping("/product/product_detail")
 	public String detail(int productNo, Model model){
 		logger.info("detail()");
 		Product product = productService.getProduct(productNo);
 		model.addAttribute("product", product);
-		return "product/detail";
+		return "product/product_detail";
 	}
-
+	
+	@RequestMapping("/product/insertCart")
+		public String insertCart(int productNo, Model model) {
+		
+			Product product = productService.getProduct(productNo);
+//			Cart cart = 
+			model.addAttribute("product", product);
+					
+			return "redirect:/product/showCart";
+		}	
+	
+	
 }

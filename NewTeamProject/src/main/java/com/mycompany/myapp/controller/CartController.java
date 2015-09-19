@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.mycompany.myapp.dto.Cart;
 import com.mycompany.myapp.service.CartService;
+import com.mycompany.myapp.service.OrderService;
 
 
 @Controller
@@ -25,21 +26,33 @@ public class CartController {
 		@Autowired
 		private CartService cartService;
 		
+		@Autowired
+		private OrderService orderService;
 		
-		@RequestMapping("/product/delete")
-		public String delete(String longinID){
-			cartService.remove("r");
-			return  "redirec:/product/delete";
+		@RequestMapping("order/result")
+		public String result(String longinID,Model model){
+			logger.info("result();");
+			List<Cart> list = cartService.getCart("q");
+			cartService.order("q", list);
+			return  "order/result";
 		}
 		
-		@RequestMapping("/product/showCart")
+		
+		@RequestMapping("product/delete")
+		public String delete(String longinID){
+			logger.info("delete();");
+			cartService.remove("q");
+			return  "redirect:/product/showCart";
+		}
+		
+		@RequestMapping("product/showCart")
 		public String showCart(Model model){
-			List<Cart> list = cartService.getCart("r");
+			List<Cart> list = cartService.getCart("q");
 			model.addAttribute("list", list);
 			return "product/showCart";
 		}
 		
-		@RequestMapping("/product/cartList")	
+		@RequestMapping("product/cartList")	
 		public String cartList(@RequestParam(defaultValue = "1") String loginID, int pageNo, Model model, HttpSession session) {
 			
 			session.setAttribute("pageNo", pageNo);
