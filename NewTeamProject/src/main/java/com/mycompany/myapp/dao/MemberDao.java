@@ -26,7 +26,6 @@ public class MemberDao {
 				+ " (member_id, member_name, member_password) "
 				+ "values (?, ?, ?)";
 		
-		KeyHolder keyHolder=new GeneratedKeyHolder();
 		jdbcTemplate.update(new PreparedStatementCreator(){
 			@Override
 			public PreparedStatement createPreparedStatement(Connection conn) throws SQLException{
@@ -38,7 +37,7 @@ public class MemberDao {
 				return pstmt;
 			}
 			
-		}, keyHolder);
+		});
 		return member.getMemberId();
 	}
 	

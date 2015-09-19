@@ -7,24 +7,19 @@
 		<meta charset=UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
-			h4{
-				color: white;
+			body{
+				color:white;
 			}
-			#new {
-
-				margin-top:20px;
-			}
-			
+		
 		</style>
+		
 	</head>
 	<body>
-		<form method="post" action="check" >
+		<form method="post" action="add" >
 			<h4>아이디:<input type="text" name="memberID" size="15" ></h4>
+			<h4>이름:<input type="text" name="memberName" size="15"></h4>
 			<h4>비밀번호:<input type="password" name="memberPW" size="15" ></h4>
-			<input type="submit" value="로그인">
+			<input type="submit" value="가입하기">
 		</form>
-		<div id="new">
-			<a href="newmember"><button>회원가입</button></a>
-		</div>
 	</body>
 </html>
