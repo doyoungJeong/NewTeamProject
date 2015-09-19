@@ -4,29 +4,31 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
 		<meta charset=UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
 			body{
 				color: white;
+				font-family:Play;
 			}
 
 		</style>
 	</head>
 	<body>
 		<c:if test="${result=='success'}">
-			${memberId}님<h4>로그인 되었습니다.</h4>
+			<h4>HELLO ^3^  </h4> ${memberId}~
 			<div>
-				<a href="logout"><button>로그아웃</button></a>
+				<a href="logout"><button>LOGOUT</button></a>
 			</div>
 		</c:if>
 		
 		<c:if test="${result=='wrong Password'}">
-			<h4>비밀번호가 틀렸습니다.</h4>
+			<h4>WRONG PASSWORD T_T </h4>
 		</c:if>
 		
 		<c:if test="${result=='wrong ID'}">
-			<h4>아이디가 틀렸습니다.</h4>
+			<h4>WRONG ID T_T </h4>
 		</c:if>
 	</body>
 </html>

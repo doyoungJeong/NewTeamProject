@@ -34,6 +34,7 @@ public class CartController {
 			logger.info("result();");
 			List<Cart> list = cartService.getCart((String)session.getAttribute("memberId"));
 			cartService.order((String)session.getAttribute("memberId"), list);
+			cartService.remove((String)session.getAttribute("memberId"));
 			return  "order/result";
 		}
 		

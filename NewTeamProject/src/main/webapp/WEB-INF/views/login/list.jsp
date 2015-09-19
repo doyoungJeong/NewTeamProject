@@ -4,15 +4,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
 		<meta charset=UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
 			body{
 				color:white;
+				font-family:Play;
 			}
 			
+			h4{
+				margin:30px;
+			}
 			#new{
-				margin-top: 10px;
+				margin: 30px;
 			}
 		
 		</style>
@@ -21,19 +26,19 @@
 	
 		<c:if test="${memberId == null }">
 			<form method="post" action="check" >
-				<h4>아이디:<input type="text" name="memberID" size="15" ></h4>
-				<h4>비밀번호:<input type="password" name="memberPW" size="15" ></h4>
-				<input type="submit" value="로그인">
+				<h4>ID:&nbsp&nbsp<input type="text" name="memberID" size="15" ></h4>
+				<h4>PASSWORD:&nbsp&nbsp<input type="password" name="memberPW" size="15" ></h4>
+				&nbsp&nbsp&nbsp&nbsp&nbsp<input type="submit" value="LOGIN">
 			</form>
 			<div id="new">
-				<a href="newmember"><button>회원가입</button></a>
+				<a href="newmember"><button>NEW</button></a>
 			</div>
 		</c:if>
 		
 		<c:if test="${memberId != null }">
-			${memberId}님이<h4>로그인 중입니다.</h4>
-			<div>
-				<a href="logout"><button>로그아웃</button></a>
+			<h4>I AM &nbsp</h4> ${memberId} -o-
+			<div id="new">
+				<a href="logout"><button>LOGOUT</button></a>
 			</div>
 		</c:if>
 	</body>

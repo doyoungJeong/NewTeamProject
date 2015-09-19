@@ -4,22 +4,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
 		<meta charset=UTF-8">
 		<title>Insert title here</title>
 		<style type="text/css">
 			body{
 				color:white;
+				font-family:Play;
+				margin: 20px;
+				font-size: 30px;
 			}
 		
 		</style>
 	</head>
 	<body>
 		<c:if test="${ck=='success' }">
-			<h4>회원가입이 성공했습니다.</h4>
+			<h4>SUCCESS! THANK YOU ^_^ </h4>
 		</c:if>
 		
 		<c:if test="${ck=='fail' }">
-			<h4>중복되는 아이디가 있습니다. 다른 아이디로 가입해주세요.</h4>
+			<h4>TRY AGAIN PLEASE T_T </h4>
 		</c:if>
 	</body>
 </html>

@@ -4,8 +4,11 @@
 
 <html>
 	<head>
+		<link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
 		<title>Home</title>
 		<style type="text/css">
+		
 
 			* {
 				margin: 0px;
@@ -13,11 +16,13 @@
 			}
 			/*------------------------------------*/
 			body {
-				width: 960px;
+				width:960px;
 				margin: 0px auto;
-				background-color: #292929;
+			
 				color: #FFFFFF;
-				/* background-image: url("resources/image/space.jpg"); */
+
+				background-image: url(resources/image/img.png);
+				background-size: auto 100%;
 			
 			}	
 			/*------------------------------------*/				
@@ -29,7 +34,8 @@
 			/*------------------------------------*/			
 			#header {
 				margin: 20px 0px;
-				font-style: italic;
+				left: 50px;
+				font-family: Orbitron;
 			}
 			#content {
 				border: 3px solid white;	
@@ -81,21 +87,17 @@
 				padding-left: 5px;
 			}
 			
-			#content2 #menu h4 {
-				margin-top: 10px;
-				padding-left: 5px;
-			}
-			
 			#content2 #menu a {
 				display:block;
-				margin: 1px 10px 1px 20px;
+				margin: 50px;
 				text-decoration: none;
-				font-size: small;
+				font-size: 20px;
 				color: white;
+				font-family:Play;
 			}
 			
 			#content2 #menu a:hover {
-				color: orange;
+				color: gray;
 			}
 			
 			#content2 #content {
@@ -110,30 +112,27 @@
 				position: absolute;
 				border: none;
 			}
+			
+			img{
+				height: 100%;
+			}
 		</style>
 	</head>
 	
 	<body>
 		<div id="page">
 			<div id="header">
-				<h1>Shopping Mall</h1>
+				<h1>Team4's Project</h1>
 			</div>
-			
-			<div id="content1">
-				<div id="login"></div>
-				<div id="frontImage">
-					<!-- <img src="resources/image/dt.gif"/> -->
-				</div>
-			</div>
+
 			
 			<div id="content2">
 				<div id="menu">
 					<ul>
-						<h4>스프링 게시판</h4>
-						<li><a href="login/list" target="iframe">로그인</a></li>
-						<li><a href="product/productList" target="iframe">상품 게시판</a></li>
-						<li><a href="product/showCart" target="iframe">장바구니보기</a></li>
-						<li><a href="order/list" target="iframe">주문정보</a></li>
+						<li><a href="login/list" target="iframe">LOGIN</a></li>
+						<li><a href="product/productList" target="iframe">PRODUCT</a></li>
+						<li><a href="product/showCart" target="iframe">CART</a></li>
+						<li><a href="order/list" target="iframe">ORDER</a></li>
 					</ul>
 				</div>
 				<div id="content">
