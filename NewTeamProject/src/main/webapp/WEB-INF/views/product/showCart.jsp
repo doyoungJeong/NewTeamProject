@@ -87,10 +87,10 @@
 		</table>
 			
 		<div id="buttonGroup">
-			<a href="#">
-				주문하기
+			<a href="../order/result" >주문하기</a>
+				
 			</a>&nbsp;&nbsp;&nbsp;
-			<a href="/product/delete">카트 비우기</a>
+			<a href="delete">카트 비우기</a>
 		</div>
 	</body>
 </html>
