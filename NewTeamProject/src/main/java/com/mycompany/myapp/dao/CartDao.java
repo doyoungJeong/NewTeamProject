@@ -79,12 +79,6 @@ public class CartDao {
 
 	public List<Cart> select(String loginID)  {
 
-		
-		// String sql = "select distinct p.product_no, p.product_name,
-		// c.cart_amount, c.cart_totalprice from carts c, products p where
-		// c.product_no = p.product_no and member_id = ?";
-		// String sql = "select * from carts where member_id=?";
-
 		String sql = "select p.product_no, p.product_name, p.product_price,c.cart_amount, c.cart_totalprice from "
 				+ " carts c, products p  where c.product_no = p.product_no  " + "and  c.member_id= ? ";
 		
@@ -92,7 +86,7 @@ public class CartDao {
 				sql,
 				new Object[] {loginID},// ? ? ?ˆ?•¾ ç­Œë¾?Š¦å¯ƒï¿½ ? ?Œëµ? ï¿½â‘¤?ƒ?‚‰ï¿? ?¶?…ï¿½ã‚Œë±? ? ?„?Œ? ?ˆ??
 				new RowMapper<Cart>() { // sql? ?ˆ?“ ? ?„?£ ?¶?‰?˜™? ?Œì£¬å ?Œê¶? ?‡?‚´?ˆ–ï¿½ì“¥? ?Œë²? ?¶?…ï¿½ã‚Œë±? dto? ?ˆ?“  ? ?ˆ?ˆ¡? ?ˆêµ¡å ?ˆ?“  ç­Œë¾ë²é‡‰ï¿? ? ?ˆë»»å ?„?…•? ?ˆë®? ?‡ê»‰í”ï¿½ë±½ RowMapper?š¥?ˆ½?˜™ ? ?ˆë¦½å ?ˆë¼?.
-
+				
 					@Override // ? ?Œ?’­ï¿½ëµ³ï¿½ëŒ?˜™ ? ?ˆë¥´å ?ˆ?² rs , ç­Œë¥…?˜™ ?¶?†ë®‡ï¿½ë²? ? ?ˆë»¬å ?Œë±? ?¶?‰?˜™? ?Œì£¬å ?Œ?„…? ?ˆë®‰æ¶?‰?˜™ rowNum
 					public Cart mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Cart cart = new Cart();
@@ -105,6 +99,7 @@ public class CartDao {
 					} 
 				}        
  			);
+		
 		return list;
 
 	}
